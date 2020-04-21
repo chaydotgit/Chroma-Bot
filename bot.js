@@ -27,10 +27,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         args = args.splice(1);
         switch(cmd) {
             // !ping
-            case 'ping':
+            case 'rick':
                 bot.sendMessage({
                     to: channelID,
-                    message: 'Pong!'
+                    message: 'fuck you rick'
                 });
             break;
             // Just add any case commands if you want to..
