@@ -1,0 +1,8 @@
+{
+    “name”: “Chroma-Bot”,
+    “version”: “1.0.0”,
+    “description”: “Bot to rule the world”,
+    “main”: “bot.js”,
+    “author”: “Chayanne Rodriguez”,
+    “dependencies”: {}
+}
