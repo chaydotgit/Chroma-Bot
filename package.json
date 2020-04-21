@@ -1,8 +1,11 @@
 {
-    “name”: “Chroma-Bot”,
-    “version”: “1.0.0”,
-    “description”: “Bot to rule the world”,
-    “main”: “bot.js”,
-    “author”: “Chayanne Rodriguez”,
-    “dependencies”: {}
+    "name": "Chroma-Bot",
+    "version": "1.0.0",
+    "description": "Bot to rule the world",
+    "main": "bot.js",
+    "author": "Chayanne Rodriguez",
+    "dependencies": {
+        "discord.js": "^12.2.0",
+        "winston": "^3.2.1"
+    }
 }
