@@ -1,10 +1,19 @@
 {
-    "name": "Chroma-Bot",
-    "version": "1.0.0",
-    "description": "Bot for self practice :^)",
-    "main": "bot.js",
-    "author": "Chayanne Rodriguez",
-    "dependencies": {
-        "discord.js": "^12.2.0"
-    }
+  "name": "chroma-bot",
+  "version": "1.0.0",
+  "description": "Discord bot for self practice",
+  "main": "bot.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chromanoiz/Chroma-Bot.git"
+  },
+  "author": "Chayanne Rodriguez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chromanoiz/Chroma-Bot/issues"
+  },
+  "homepage": "https://github.com/Chromanoiz/Chroma-Bot#readme",
+  "dependencies": {
+    "discord.js": "^12.2.0"
+  }
 }
