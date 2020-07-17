@@ -1,11 +1,10 @@
 {
     "name": "Chroma-Bot",
     "version": "1.0.0",
-    "description": "Bot to rule the world",
+    "description": "Bot for self practice :^)",
     "main": "bot.js",
     "author": "Chayanne Rodriguez",
     "dependencies": {
-        "discord.js": "^12.2.0",
-        "winston": "^3.2.1"
+        "discord.js": "^12.2.0"
     }
 }
