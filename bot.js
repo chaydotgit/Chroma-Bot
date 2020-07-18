@@ -33,6 +33,10 @@ client.on('message', message => {
         else if (message.content === 'Good job Chroma-Bot') { 
             message.react('702070723190980679');
         }
+        else if (message.content === 'Fuck you Chroma-Bot') {
+            message.react('702071924154433537');
+            message.channel.send('I\'ll time u out right here right now don\'t try me');
+        }
         else 
             return;
     }
