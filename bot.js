@@ -30,6 +30,9 @@ client.on('message', message => {
                                 "Go for a long drive", "Maybe go talk to a therapist lol im a bot", "Play some video games", "Talk to a friend", "Look at you. Sailing through the air majestically. Like an eagle. Piloting a blimp."];
             message.channel.send(coping_skills[Math.floor(Math.random() * 10)]);
         }
+        else if (message.content === 'Good job Chroma-Bot') { 
+            message.react('702070723190980679');
+        }
         else 
             return;
     }
@@ -52,7 +55,7 @@ client.on('message', message => {
         const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
         if (now < expirationTime) {
             const timeLeft = (expirationTime - now) / 1000;
-            return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`);
+            return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command. <:nezuko_disappointed:701948388807016550>`);
         }
     }
     timestamps.set(message.author.id, now);
