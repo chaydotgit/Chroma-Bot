@@ -35,7 +35,7 @@ client.on('message', message => {
         }
         else if (message.content === 'Fuck you Chroma-Bot') {
             message.react('702071924154433537');
-            message.channel.send('I\'ll time u out right here right now don\'t try me');
+            message.channel.send('Stop complaining.');
         }
         else 
             return;
@@ -52,6 +52,7 @@ client.on('message', message => {
         cooldowns.set(command.name, new Discord.Collection());
     }
 
+    // calculates cooldown and notifies user how much time is left 
     const now = Date.now();
     const timestamps = cooldowns.get(command.name);
     const cooldownAmount = (command.cooldown || 3) * 1000;
