@@ -1,7 +1,10 @@
 const fetch = require('node-fetch');
 const querystring = require('querystring');
 
-//throws promise rejection warning for some reason...
+/*
+* @todo: work on bot sending an embed w first result's title, synopsis, and number of episodes
+*/
+
 module.exports = {
     name: 'anime',
     description: 'Links specified anime\'s MyAnimeList page and shows description',
@@ -11,11 +14,14 @@ module.exports = {
         }
 
         const query = querystring.stringify({ q: args.join(' ') });
-
-        const result = await fetch(`https://api.jikan.moe/v3/search/anime?${query}`).then(response => response.json());
-        if (result.status != 200) {
-            throw `Response: ${result.status}`;
-        }
+        console.log(query);
+        const result = await fetch(`https://api.jikan.moe/v3/search/anime?${query}`);
         console.log(result);
+        if (result.status !== 200) {
+            return message.channel.send('I\'m having technical difficulties trying to find this anime <:KannaWhat:701947478605430857> すみません！')
+        }
+        const data = await result.json();
+        console.log('** ACTUAL DATA **');
+        console.log(data);
     },
 };
