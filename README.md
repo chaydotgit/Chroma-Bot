@@ -11,4 +11,5 @@ Some commands:
 - !anime [title] : searches MAL for top result of title given and displays info.
 
 __Base code was implemented following [Discord.js Guide](https://discordjs.guide/#before-you-begin).__
+
 __Anime commands done with the help of [Jikan MAL API](https://jikan.moe/).__
