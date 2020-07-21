@@ -1,5 +1,5 @@
 # Chroma-Bot
-Personal Discord bot to practice Javascript and Node with. 
+Personal Discord bot to practice Javascript and NodeJS with. 
 
 ## 
 At the moment, handles very basic commands from users as I try to think of more utilities to add to it and has a cooldown timer for each command.
