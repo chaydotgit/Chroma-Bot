@@ -21,6 +21,8 @@ client.once('ready', () => {
 
 client.on('message', message => {
 // exit if message doesn't start with the prefix or was sent by bot itself
+    if (message.author.bot) return;
+    
     if (!message.content.startsWith(prefix) || message.author.bot) {
         if (message.content === 'Chroma-Bot are you okay?') {
             message.channel.send('Everything that lives is designed to end. We are perpetually trapped in a never-ending spiral of life and death. Is this a curse? Or some kind of punishment? I often think about the god who blessed us with this cryptic puzzle...and wonder if we\'ll ever get the chance to kill him.')
