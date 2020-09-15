@@ -11,24 +11,24 @@ module.exports = {
 
         const songInfo = await ytdl.getInfo(args[0]);
         const song = {
-            title: songInfo.title,
-            url: songInfo.video_url,
+            title: songInfo.videoDetails.title,
+            url: songInfo.videoDetails.video_url,
         }
 
         const connection = await message.member.voice.channel.join();
-        const dispatcher = connection.play(song.url);
+        const dispatcher = connection.play(ytdl(song.url), {volume: 0.4});
 
         dispatcher.on('start', () => {
-            console.log('\`${song.title}\ is playing!`')
+            message.channel.send(`${song.title} is playing!`)
         });
 
         dispatcher.on('finish', () => {
-            console.log('\`${song.title}\ is finished playing!`')
+            message.channel.send(`${song.title} is finished playing!`)
+            connection.disconnect();
         });
 
         dispatcher.on('error', console.error);
         
-        connection.disconnect();
 
     },
 };
