@@ -15,10 +15,11 @@
   "homepage": "https://github.com/Chromanoiz/Chroma-Bot#readme",
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
-    "discord.js": "^12.2.0",
+    "discord.js": "^12.3.1",
     "ffmpeg": "0.0.4",
+    "ffmpeg-static": "^4.2.7",
     "fluent-ffmpeg": "^2.1.2",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "ytdl-core": "^3.2.1"
   }
 }
