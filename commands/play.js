@@ -28,7 +28,5 @@ module.exports = {
         });
 
         dispatcher.on('error', console.error);
-        
-
     },
 };
