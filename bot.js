@@ -84,11 +84,10 @@ bot.on('message', async message => {
     timestamps.set(message.author.id, now);
     setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
-    
-    const serverQueue = songQueue.get(message.guild.id);
     // executes command from list of commands
     try { 
         if (commandName === "play" || commandName === "skip" || commandName === "stop") {
+            const serverQueue = songQueue.get(message.guild.id);
             command.execute(message, args, songQueue, serverQueue);
         } else {
             command.execute(message, args);
