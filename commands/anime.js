@@ -35,6 +35,7 @@ module.exports = {
         const embed = new MessageEmbed()
             .setColor('#fc0390')
             .setTitle(anime.title)
+            .setImage(anime.image_url)
             .addFields(
                 {name: 'URL', value: trim(anime.url, 1024)},
                 {name: 'Episodes', value: trim(anime.episodes, 1024)},
