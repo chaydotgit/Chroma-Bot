@@ -1,6 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const fetch = require('node-fetch');
-const querystring = require('querystring');
 const { MessageEmbed } = require('discord.js');
 
 
@@ -36,11 +35,11 @@ module.exports = {
         const embed = new MessageEmbed()
             .setColor('#fc0390')
             .setTitle(anime.title)
+            .setURL(anime.url)
             .setImage(anime.image_url)
             .addFields(
-                {name: 'URL', value: trim(anime.url, 1024)},
-                {name: 'Episodes', value: trim(anime.episodes.toString(), 1024)},
                 {name: 'Synopsis', value: trim(anime.synopsis, 1024)},
+                {name: 'Episodes', value: trim(anime.episodes.toString(), 1024)},
                 {name: 'Rating', value: trim(anime.score.toString(), 1024)}
             )
         return interaction.reply({ embeds: [embed] });
