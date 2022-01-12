@@ -22,20 +22,6 @@ client.once('ready', () => {
 });
 
 
-// // implementing color change on reaction to message 
-// const colorChangeMsg = '755976824734875769'
-// const colorMap = {'1️⃣': 'TEAL', '2️⃣': 'GREEN', '3️⃣': 'BLUE', '4️⃣': 'PURPLE', '5️⃣': 'PINK', '6️⃣': 'REDPINK', '7️⃣': 'RED', '8️⃣': 'YELLOW', 
-//                 '9️⃣': 'ORANGE', '🔟': 'GRAY', '🇦': 'BLACK', '🇧': 'WHITE'};
-// client.on('messageReactionAdd', async (reaction, user) => {
-//     await addRoleColor(reaction, user);
-// });
-
-// // removal of color upon unreacting to color change message 
-// client.on('messageReactionRemove', async (reaction, user) => {
-//     await removeRoleColor(reaction, user);
-// });
-
-
 client.on('interactionCreate', async interaction => {
 // exit if message doesn't start with the prefix or was sent by client itself
     if (!interaction.isCommand()) return;
@@ -112,66 +98,3 @@ client.on('interactionCreate', async interaction => {
 });
 
 client.login(token);
-
-// async function addRoleColor(reaction, user) {
-//     console.log("Message Reaction Add Top");
-//     let applyRole = async () => {
-//         let emojiName = reaction.emoji.name;
-//         console.log('emoji: ' + emojiName + " color: " + colorMap[emojiName]);
-//         let role = reaction.message.guild.roles.cache.find(role => role.name === colorMap[emojiName]);
-//         let member = reaction.message.guild.members.cache.find(member => member.id == user.id);
-//         if (role && member) {
-//             console.log("User " + member.displayName + " changed color to " + colorMap[emojiName]);
-//             await member.roles.add(role);
-//         }
-//     };
-//     if (reaction.message.partial) {
-//         try {
-//             let msg = await reaction.message.fetch();
-//             console.log(msg.id);
-//             if (msg.id === colorChangeMsg) {
-//                 console.log("Cached - Applied");
-//                 applyRole();
-//             }
-//         }
-//         catch (err) {
-//             console.log(err);
-//         }
-//     } else {
-//         console.log("Not a Partial");
-//         if (reaction.message.id === colorChangeMsg) {
-//             console.log("Not a Partial - applied");
-//             applyRole();
-//         }
-//     }
-// }
-
-// async function removeRoleColor(reaction, user) {
-//     console.log("Message Reaction Removal");
-//     let removeRole = async () => {
-//         let emojiName = reaction.emoji.name;
-//         let role = reaction.message.guild.roles.cache.find(role => role.name === colorMap[emojiName]);
-//         let member = reaction.message.guild.members.cache.find(member => member.id == user.id);
-//         if (role)
-//             await member.roles.remove(role);
-//     };
-//     if (reaction.message.partial) {
-//         try {
-//             let msg = await reaction.message.fetch();
-//             console.log(msg.id);
-//             if (msg.id === colorChangeMsg) {
-//                 console.log("Cached - Applied");
-//                 removeRole();
-//             }
-//         }
-//         catch (err) {
-//             console.log(err);
-//         }
-//     } else {
-//         console.log("Not a Partial");
-//         if (reaction.message.id === colorChangeMsg) {
-//             console.log("Not a Partial - applied");
-//             removeRole();
-//         }
-//     }
-// }
