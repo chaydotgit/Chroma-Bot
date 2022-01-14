@@ -19,12 +19,31 @@ module.exports = {
             }
 
             if (interaction.customId == 'pronoun select') {
-                let pronoun = interaction.guild.roles.cache.find(r => r.name === interaction.values[0]);
-                if (interaction.member.roles.cache.find(r => r = pronoun) != undefined) {
-                    await interaction.reply({ content: `You have already added the pronouns ${pronoun.name}!`, ephemeral: true});
+                let newPronouns = [];
+                let existingPronouns = []
+                for (const pronoun of interaction.values) {
+                    let hasPronoun = interaction.member.roles.cache.find(r => r.name === pronoun);
+                    if (!hasPronoun) {
+                        newPronouns.push(pronoun);
+                        interaction.member.roles.add(interaction.guild.roles.cache.find(r => r.name === pronoun));
+                    } else {
+                        existingPronouns.push(pronoun);
+                    }
+                }
+
+                let existingPronounString = "";
+                for (const pronoun of existingPronouns) {
+                    existingPronounString = existingPronounString + pronoun + " ";
+                }
+
+                if (newPronouns.length != 0) {
+                    let newPronounString = "";
+                    for (const pronoun of newPronouns) {
+                        newPronounString = newPronounString + pronoun + " ";
+                    }
+                    await interaction.reply({ content: `${interaction.member.displayName}'s pronouns are: ${newPronounString} ${existingPronounString}`});
                 } else {
-                    interaction.member.roles.add(pronoun);
-                    await interaction.reply({ content: `${interaction.member.displayName}'s pronouns are ${pronoun.name}!`});
+                    await interaction.reply({ content: `You have already added the pronouns ${existingPronounString}`, ephemeral: true});
                 }
             }
         }

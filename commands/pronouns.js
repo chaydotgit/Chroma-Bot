@@ -32,7 +32,7 @@ module.exports = {
             const embed = new MessageEmbed()
                     .setColor('#00f2ff')
                     .setTitle('Hello! What are your pronouns? ')
-                    .setDescription('Select your preferred pronouns');
+                    .setDescription('Select your preferred pronouns. You may select multiple from the menu. Pronouns will be list under your roles :^)');
             await interaction.reply({embeds: [embed], components:[row]});
     },
 };
