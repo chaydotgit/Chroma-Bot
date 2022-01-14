@@ -6,9 +6,13 @@ Discord bot that is able to handle basic commands, play music in voice channels,
 Handles commands such as:
 - /hello : says hi back to the user
 - /anime [title] : searches MAL for top result of title given and displays info.  
-        ![image](https://user-images.githubusercontent.com/26285957/149454669-673c0444-ffe2-4a51-868a-a58573e5a1fa.png)
+        <p align="center">
+                <img src="https://user-images.githubusercontent.com/26285957/149454669-673c0444-ffe2-4a51-868a-a58573e5a1fa.png" />
+        </p>
 - /color : allows users to change their server colors through a select menu  
-        ![image](https://user-images.githubusercontent.com/26285957/149454544-2e22d867-9c23-48ac-8ca6-0f6e22afd399.png)
+        <p align="center">
+                <img src="https://user-images.githubusercontent.com/26285957/149454544-2e22d867-9c23-48ac-8ca6-0f6e22afd399.png" />
+        </p>
 - /glados : sends a GLaDOS line to the channel
 - /reload : reloads command for testing purposes
 
