@@ -6,13 +6,20 @@ module.exports = {
 
         if (interaction.isSelectMenu()) {
             if (interaction.customId == 'color select') {
-                interaction.values[0];
+                const existingColors = ["PURPLE", "PINK", "RED PINK", "RED", "ORANGE", "YELLOW", "GREEN", "MINT GREEN", "TEAL", "BLUE", "WHITE", "GREY", "BLACK"]
 
+                let newColor = interaction.guild.roles.cache.find(r => r.name === interaction.values[0]);
+                let currentColor = interaction.member.roles.cache.find(r => existingColors.includes(r.name))
+                if (currentColor) {
+                    interaction.member.roles.remove(currentColor);
+                }
+                interaction.member.roles.add(newColor);
+                await interaction.reply({ content: `${interaction.member.displayName}'s color has been changed to ${newColor.name}!`, ephemeral: true });
+                console.log(`${interaction.user.tag} changed their role color to ${newColor.name}`);
             }
         }
 
         const command = interaction.client.commands.get(interaction.commandName);
-
         if (!command) return;
 
         try {

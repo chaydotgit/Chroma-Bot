@@ -43,6 +43,10 @@ module.exports = {
                             value: 'GREEN',
                         },
                         {
+                            label: 'Mint Green',
+                            value: 'MINT GREEN',
+                        },
+                        {
                             label: 'Teal',
                             value: 'TEAL',
                         },
@@ -69,6 +73,6 @@ module.exports = {
                     .setColor('#5d00ff')
                     .setTitle('🌈 Color Changer 🌈')
                     .setDescription('Change your user color with the menu below!');
-            await interaction.reply({ephemeral: true, embeds: [embed], components:[row]});
+            await interaction.reply({embeds: [embed], components:[row]});
     },
 };
