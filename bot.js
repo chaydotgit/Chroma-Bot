@@ -24,7 +24,13 @@ client.once('ready', () => {
 
 client.on('interactionCreate', async interaction => {
 // exit if message doesn't start with the prefix or was sent by client itself
-    if (!interaction.isCommand()) return;
+    if (!interaction.isCommand() || !interaction.isSelectMenu()) return;
+
+    if (interaction.isSelectMenu()) {
+        if (interaction.customId == 'color select') {
+            
+        }
+    }
 
     const command = client.commands.get(interaction.commandName);
 

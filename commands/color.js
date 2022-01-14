@@ -9,7 +9,7 @@ module.exports = {
         const row = new MessageActionRow()
             .addComponents(
                 new MessageSelectMenu()
-                    .setCustomId('select color')
+                    .setCustomId('color select')
                     .setPlaceholder('No Color Selected')
                     .setMinValues(1)
                     .setMaxValues(1)
