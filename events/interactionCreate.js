@@ -17,6 +17,16 @@ module.exports = {
                 await interaction.reply({ content: `${interaction.member.displayName}'s color has been changed to ${newColor.name}!`, ephemeral: true });
                 console.log(`${interaction.user.tag} changed their role color to ${newColor.name}`);
             }
+
+            if (interaction.customId == 'pronoun select') {
+                let pronoun = interaction.guild.roles.cache.find(r => r.name === interaction.values[0]);
+                if (interaction.member.roles.cache.find(r => r = pronoun) != undefined) {
+                    await interaction.reply({ content: `You have already added the pronouns ${pronoun.name}!`, ephemeral: true});
+                } else {
+                    interaction.member.roles.add(pronoun);
+                    await interaction.reply({ content: `${interaction.member.displayName}'s pronouns are ${pronoun.name}!`});
+                }
+            }
         }
 
         const command = interaction.client.commands.get(interaction.commandName);
