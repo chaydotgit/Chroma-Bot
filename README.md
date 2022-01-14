@@ -13,6 +13,10 @@ Handles commands such as:
         <p align="center">
                 <img src="https://user-images.githubusercontent.com/26285957/149454544-2e22d867-9c23-48ac-8ca6-0f6e22afd399.png" />
         </p>
+- /pronouns : Displays select menu for users to set their preferred pronouns. The pronouns are viewable through the user's roles.
+        <p align="center">
+                <img src="https://user-images.githubusercontent.com/26285957/149589762-14ba5cca-990c-40c9-9c3b-a60217fb2aaa.png" />
+        </p>
 - /glados : sends a GLaDOS line to the channel
 - /reload : reloads command for testing purposes
 
