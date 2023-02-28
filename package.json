@@ -5,14 +5,14 @@
   "main": "bot.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Chromanoiz/Chroma-Bot.git"
+    "url": "git+https://github.com/chaydotgit/Chroma-Bot.git"
   },
   "author": "Chayanne Rodriguez",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Chromanoiz/Chroma-Bot/issues"
+    "url": "https://github.com/chaydotgit/Chroma-Bot/issues"
   },
-  "homepage": "https://github.com/Chromanoiz/Chroma-Bot#readme",
+  "homepage": "https://github.com/chaydotgit/Chroma-Bot#readme",
   "dependencies": {
     "@discordjs/opus": "^0.8.0",
     "@discordjs/voice": "^0.7.5",
