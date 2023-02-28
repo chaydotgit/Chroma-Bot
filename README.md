@@ -1,6 +1,9 @@
 # Chroma-Bot
 Personal Discord bot to practice Javascript and NodeJS with. 
 
+![GitHub last commit](https://img.shields.io/github/last-commit/chaydotgit/Chroma-Bot?style=for-the-badge)
+[![GitHub issues](https://img.shields.io/github/issues/chaydotgit/Chroma-Bot?style=for-the-badge)](https://github.com/chaydotgit/Chroma-Bot/issues)
+
 ## 
 Discord bot that is able to handle basic commands, play music in voice channels, as well as let server members change role colors!
 Handles commands such as:
