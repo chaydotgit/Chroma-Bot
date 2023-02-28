@@ -34,19 +34,10 @@ module.exports = {
                     }
                 }
 
-                let existingPronounString = "";
-                for (const pronoun of existingPronouns) {
-                    existingPronounString = existingPronounString + pronoun + " ";
-                }
-
                 if (newPronouns.length != 0) {
-                    let newPronounString = "";
-                    for (const pronoun of newPronouns) {
-                        newPronounString = newPronounString + pronoun + " ";
-                    }
-                    await interaction.reply({ content: `${interaction.member.displayName}'s pronouns are: ${newPronounString} ${existingPronounString}`});
+                    await interaction.reply({ content: `${interaction.member.displayName}'s pronouns are: ${newPronouns.concat(existingPronouns).toString()}` });
                 } else {
-                    await interaction.reply({ content: `You have already added the pronouns ${existingPronounString}`, ephemeral: true});
+                    await interaction.reply({ content: `You have already added the pronouns ${existingPronouns.toString()}`, ephemeral: true});
                 }
             }
         }
