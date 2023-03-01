@@ -2,30 +2,75 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const ytdl = require('ytdl-core');
 const { AudioPlayerStatus, StreamType, createAudioPlayer, createAudioResource, joinVoiceChannel } = require('@discordjs/voice');
 
-
+// TODO:
+// - implement handling of multiple subcommands
+// - add queue for individual servers
+// - implement pause
+// - implement stop
+// - implement skip
+//
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('play')
-        .setDescription('Play music from YouTube in the voice channel you are in.')
-        .addStringOption(option =>
-            option.setName('url')
-                .setDescription('YouTube link to play audio from')
-                .setRequired(true)),
+        .setName('audioplayer')
+        .setDescription('Audio player for the voice channel you are in. Play, pause, stop, or skip music from YouTube that plays in your current voice channel!')
+        .addSubcommand( subcommand =>
+            subcommand
+                .setName('play')
+                .setDescription('Play music from YouTube in the voice channel you are in.')
+                .addStringOption(option =>
+                    option.setName('url')
+                        .setDescription('YouTube link to play audio from')
+                        .setRequired(true)),
+        )
+        .addSubcommand( subcommand =>
+            subcommand
+                .setName('stop')
+                .setDescription('Stop playing music in the voice channel and clear the queue')
+        )
+        .addSubcommand( subcommand =>
+            subcommand
+                .setName('pause')
+                .setDescription('Pause music that is playing in your current voice channel.')
+        )
+        .addSubcommand( subcommand =>
+            subcommand
+                .setName('skip')
+                .setDescription('Skip to the next song in your voice channel\'s queue.')
+        ),
     async execute (interaction) {
-        const connection = joinVoiceChannel({
-            channelId: interaction.member.voice.channelId,
-            guildId: interaction.guildId,
-            adapterCreator: interaction.guild.voiceAdapterCreator,
-        });
+        if (!interaction.member.voice.channel) {
+            return interaction.reply('You need to enter a voice channel in order to use this command!')
+        } else {
+            const connection = joinVoiceChannel({
+                channelId: interaction.member.voice.channelId,
+                guildId: interaction.guildId,
+                adapterCreator: interaction.guild.voiceAdapterCreator,
+            });
+            
+            switch(interaction.options.getSubcommand()) {
+                case "play": {
+                    const stream = ytdl(interaction.options.getString('url'), {filter: 'audioonly'});
+                    const resource = createAudioResource(stream, {inputType: StreamType.Arbitrary});
+                    const player = createAudioPlayer();
 
-        const stream = ytdl(interaction.options.getString('url'), {filter: 'audioonly'});
-        const resource = createAudioResource(stream, {inputType: StreamType.Arbitrary});
-        const player = createAudioPlayer();
+                    interaction.reply("Playing ")
 
-        player.play(resource);
-        connection.subscribe(player);
+                    player.play(resource);
+                    connection.subscribe(player);
 
-        player.on(AudioPlayerStatus.Idle, () => connection.destroy());
+                    player.on(AudioPlayerStatus.Idle, () => connection.destroy());
+                }
+                case "skip": {
+
+                }
+                case "pause": {
+
+                }
+                case "stop": {
+                    connection.destroy();
+                }
+            }
+        }
     },
 };
     // name: 'play',

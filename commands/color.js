@@ -1,14 +1,13 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageActionRow, MessageSelectMenu, MessageEmbed } = require('discord.js');
+const { ActionRowBuilder, StringSelectMenuBuilder, EmbedBuilder, SlashCommandBuilder} = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('color')
         .setDescription('Changes color of user'),
     async execute (interaction) {
-        const row = new MessageActionRow()
+        const row = new ActionRowBuilder()
             .addComponents(
-                new MessageSelectMenu()
+                new StringSelectMenuBuilder()
                     .setCustomId('color select')
                     .setPlaceholder('No Color Selected')
                     .setMinValues(1)
@@ -69,7 +68,7 @@ module.exports = {
                     ]),
             );
         
-            const embed = new MessageEmbed()
+            const embed = new EmbedBuilder()
                     .setColor('#5d00ff')
                     .setTitle('🌈 Color Changer 🌈')
                     .setDescription('Change your user color with the menu below!');
