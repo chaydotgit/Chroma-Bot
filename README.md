@@ -1,5 +1,5 @@
 # Chroma-Bot
-Personal Discord bot to practice Javascript and NodeJS with. 
+Personal Discord bot to practice Javascript and NodeJS with. Currently hosted on AWS!
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/chaydotgit/Chroma-Bot?style=for-the-badge)
 [![GitHub issues](https://img.shields.io/github/issues/chaydotgit/Chroma-Bot?style=for-the-badge)](https://github.com/chaydotgit/Chroma-Bot/issues)
