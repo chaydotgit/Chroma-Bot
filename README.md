@@ -10,8 +10,12 @@ Handles commands such as:
 - /hello : says hi back to the user
 - /help : Lists all commands Chroma Bot can perform
         <p align="center">
-         ![image](https://user-images.githubusercontent.com/26285957/222008466-14626658-c08f-491a-b62c-6a66258f099a.png)
+        ![image](https://user-images.githubusercontent.com/26285957/222298515-04c82899-169b-4e05-a5f8-8051b96b4095.png)
         </p>
+- /ticket : Sends a ticket to the developer if a user would like to notify of any bugs they encounter or ideas they think would improve the bot.
+        <p align="center">
+        ![image](https://user-images.githubusercontent.com/26285957/222298805-83b70b21-eee0-47fa-b992-e7194565b7bd.png)
+        <p>
 - /anime [title] : searches MAL for top result of title given and displays info.  
         <p align="center">
         ![image](https://user-images.githubusercontent.com/26285957/222009447-5c7d0f20-19e7-4e1b-aece-8c3288271dbd.png)
@@ -25,7 +29,6 @@ Handles commands such as:
         ![image](https://user-images.githubusercontent.com/26285957/222009740-ed1614c5-a4ff-4a2c-8c26-21eb1e9322e5.png)
         </p>
 - /glados : sends a GLaDOS line to the channel
-- /play [YT URL] : play audio from a linked youtube video in the user's current voice channel
 
 __Base code was implemented following [Discord.js Guide](https://discordjs.guide/#before-you-begin).__
 
