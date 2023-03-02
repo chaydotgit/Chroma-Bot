@@ -16,6 +16,7 @@ module.exports = {
                 {name: '/pronouns', value: 'Set your preferred pronouns as a role on the server with the select menu I send.'},
                 {name: '/anime', value: 'Want info about an anime? Send me the title and I will give you basic information about it.'},
                 {name: '/glados', value: 'I say a GLaDOS voice line'},
+                {name: '/ticket', value: 'Send a ticket to my developer if you experience any bugs while using me or improvements you think would be useful!'}
             )
             .setFooter({ text: 'C H R O M A', iconURL: 'https://i.imgur.com/KXtuGW5.png' });
             await interaction.reply({embeds: [embed]});
