@@ -9,7 +9,7 @@ module.exports = {
                 .setDescription('bug or improvement to send to my developer')
                 .setRequired(true)),
     async execute (interaction) {
-        interaction.client.users.send('186685751285514240', `The user <@${interaction.user.tag}> sent the following ticket: ${interaction.options.getString('message')}`);
+        interaction.client.users.send('186685751285514240', `The user @${interaction.user.tag} sent the following ticket: ${interaction.options.getString('message')}`);
         return interaction.reply( { content: `Hi, ${interaction.user.username}! Your ticket was sent to my developer! Thank you for your help in my improvements. :^)`, 
                                     ephemeral: true });
     },
