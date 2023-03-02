@@ -1,7 +1,6 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder } = require('discord.js');
+const { createAudioPlayer, createAudioResource, joinVoiceChannel, NoSubscriberBehavior, AudioPlayerStatus } = require('@discordjs/voice');
 const ytdl = require('ytdl-core');
-const { AudioPlayerStatus, StreamType, createAudioPlayer, createAudioResource, joinVoiceChannel } = require('@discordjs/voice');
-
 // TODO:
 // - implement handling of multiple subcommands
 // - add queue for individual servers
@@ -12,7 +11,7 @@ const { AudioPlayerStatus, StreamType, createAudioPlayer, createAudioResource, j
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('audioplayer')
-        .setDescription('Audio player for the voice channel you are in. Play, pause, stop, or skip music from YouTube that plays in your current voice channel!')
+        .setDescription('Play audio from youtube videos')
         .addSubcommand( subcommand =>
             subcommand
                 .setName('play')
@@ -46,27 +45,28 @@ module.exports = {
                 guildId: interaction.guildId,
                 adapterCreator: interaction.guild.voiceAdapterCreator,
             });
-            
+            const player = createAudioPlayer({
+                behaviors: {
+                    noSubscriber: NoSubscriberBehavior.Pause,
+                }
+            });
             switch(interaction.options.getSubcommand()) {
                 case "play": {
                     const stream = ytdl(interaction.options.getString('url'), {filter: 'audioonly'});
                     const resource = createAudioResource(stream, {inputType: StreamType.Arbitrary});
-                    const player = createAudioPlayer();
-
-                    interaction.reply("Playing ")
 
                     player.play(resource);
+                    player.on(AudioPlayerStatus.Playing, () => {
+                        interaction.reply("Playing");
+                    })
                     connection.subscribe(player);
-
                     player.on(AudioPlayerStatus.Idle, () => connection.destroy());
                 }
-                case "skip": {
-
-                }
                 case "pause": {
-
+                    player.pause();
                 }
                 case "stop": {
+                    player.stop();
                     connection.destroy();
                 }
             }
