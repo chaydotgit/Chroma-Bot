@@ -1,10 +1,13 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Player } = require('discord-player');
 const { token } = require('./config.json');
 
 // create new client instance
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates] });
+// create master player instance
+const player = new Player(client);
 
 // command handling
 client.commands = new Collection();
@@ -34,5 +37,9 @@ for (const file of eventFiles) {
         client.on(event.name, (...args) => event.execute(...args));
     }
 }
+
+player.events.on('playerStart', (queue, track) => {
+    queue.metadata.channel.send(`Started playing **${track.title}**!`);
+});
 
 client.login(token);
