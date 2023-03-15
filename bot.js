@@ -1,10 +1,13 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, EmbedBuilder, GatewayIntentBits } = require('discord.js');
+const { Player } = require('discord-player');
 const { token } = require('./config.json');
 
 // create new client instance
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates] });
+// create master player instance
+const player = new Player(client);
 
 // command handling
 client.commands = new Collection();
@@ -34,5 +37,18 @@ for (const file of eventFiles) {
         client.on(event.name, (...args) => event.execute(...args));
     }
 }
+
+player.events.on('playerStart', (queue, track) => {
+    const embed = new EmbedBuilder()
+            .setColor('#00ff04')
+            .setTitle(`Now Playing ${track.title} By ${track.author}`)
+            .setURL(track.url)
+            .setImage(track.thumbnail)
+            .addFields(
+                {name: 'Duration', value: track.duration},
+            )
+            .setFooter({ text: `Requested by ${track.requestedBy.username}`, iconURL: track.requestedBy.avatarURL() });
+    queue.metadata.channel.send({ embeds: [embed]});
+});
 
 client.login(token);
