@@ -16,6 +16,13 @@ Handles commands such as:
         <p align="center">
         ![image](https://user-images.githubusercontent.com/26285957/222298805-83b70b21-eee0-47fa-b992-e7194565b7bd.png)
         <p>
+- /play [Spotify/YT URL] : Play a song in the voice channel you are in from Spotify or Youtube.
+- /skip : Skip the current song in the queue.
+- /queue [Spotify/YT URL] : Queue a song to be played in the voice channel.
+- /stop : Stop the audio player and clear the server's queue
+        <p align="center">
+        ![image](https://user-images.githubusercontent.com/26285957/225187174-be32094a-d947-478d-8340-8f0b23772c00.png)
+        </p>
 - /anime [title] : searches MAL for top result of title given and displays info.  
         <p align="center">
         ![image](https://user-images.githubusercontent.com/26285957/222009447-5c7d0f20-19e7-4e1b-aece-8c3288271dbd.png)
