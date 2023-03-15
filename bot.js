@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, EmbedBuilder, GatewayIntentBits } = require('discord.js');
 const { Player } = require('discord-player');
 const { token } = require('./config.json');
 
@@ -39,7 +39,16 @@ for (const file of eventFiles) {
 }
 
 player.events.on('playerStart', (queue, track) => {
-    queue.metadata.channel.send(`Started playing **${track.title}**!`);
+    const embed = new EmbedBuilder()
+            .setColor('#00ff04')
+            .setTitle(`Now Playing ${track.title} By ${track.author}`)
+            .setURL(track.url)
+            .setImage(track.thumbnail)
+            .addFields(
+                {name: 'Duration', value: track.duration},
+            )
+            .setFooter({ text: `Requested by ${track.requestedBy.username}`, iconURL: track.requestedBy.avatarURL() });
+    queue.metadata.channel.send({ embeds: [embed]});
 });
 
 client.login(token);

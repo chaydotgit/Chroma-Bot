@@ -24,8 +24,8 @@ module.exports = {
         await interaction.deferReply();
 
         const queue = useQueue(interaction.guild.id);
-        const searchResult = await player.search(url, { requestedBy: interaction.member });
+        const searchResult = await player.search(url, { requestedBy: interaction.user });
         queue.addTrack(searchResult.tracks[0]);
-        return interaction.followUp(`Added **${searchResult.title}** to queue`);
+        return interaction.followUp(`Added **${searchResult.tracks[0].title}** to queue`);
     },
 };

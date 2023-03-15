@@ -25,6 +25,7 @@ module.exports = {
         try {
             const player = Player.singleton(interaction.client);
             const { track } = await player.play(channel, url, {
+                requestedBy: interaction.user,
                 nodeOptions: {
                     metadata: interaction
                 }
