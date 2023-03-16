@@ -1,12 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { useMasterPlayer, useQueue } = require('discord-player');
-// TODO:
-// - implement handling of multiple subcommands
-// - add queue for individual servers
-// - implement pause
-// - implement stop
-// - implement skip
-//
+const { voiceCheck } = require("../voiceCheck");
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('queue')
@@ -16,8 +11,7 @@ module.exports = {
                 .setDescription('Spotify or Youtube URL of song to queue')
                 .setRequired(true)),
     async execute (interaction) {
-        const channel = interaction.member.voice.channel;
-        if (!channel) return interaction.reply('You need to enter a voice channel in order to use this command!');
+        voiceCheck(interaction);
 
         const player = useMasterPlayer();
         const url = interaction.options.getString('url', true);

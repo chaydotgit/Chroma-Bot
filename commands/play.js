@@ -1,12 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { Player } = require('discord-player');
-// TODO:
-// - implement handling of multiple subcommands
-// - add queue for individual servers
-// - implement pause
-// - implement stop
-// - implement skip
-//
+const { Player, useQueue } = require('discord-player');
+const { voiceCheck } = require("../voiceCheck");
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('play')
@@ -14,25 +9,33 @@ module.exports = {
         .addStringOption(option =>
             option.setName('url')
                 .setDescription('Spotify or Youtube URL')
-                .setRequired(true)),
+                .setRequired(false)),
     async execute (interaction) {
-        const channel = interaction.member.voice.channel;
-        if (!channel) return interaction.reply('You need to enter a voice channel in order to use this command!');
-        const url = interaction.options.getString('url', true);
-
+        const channel = voiceCheck(interaction);
+        const url = interaction.options.getString('url');
         await interaction.deferReply();
 
-        try {
-            const player = Player.singleton(interaction.client);
-            const { track } = await player.play(channel, url, {
-                requestedBy: interaction.user,
-                nodeOptions: {
-                    metadata: interaction
-                }
-            });
-            return interaction.followUp(`**${track.title}** queued!`);
-        } catch (e) {
-            return interaction.followUp(`Something went wrong!`);
+        if (!url) {
+            const queue = useQueue(interaction.guild.id);
+            if (queue) {
+                await queue.node.play();
+                return interaction.followUp('Continuing queue.');
+            } else {
+                return interaction.followUp('There is no current queue to play! Please attach a URL to play a song.')
+            }
+        } else {
+            try {
+                const player = Player.singleton(interaction.client);
+                const { track } = await player.play(channel, url, {
+                    requestedBy: interaction.user,
+                    nodeOptions: {
+                        metadata: interaction
+                    }
+                });
+                return interaction.followUp(`**${track.title}** queued!`);
+            } catch (e) {
+                return interaction.followUp(`Something went wrong!`);
+            }
         }
     },
 };
