@@ -71,7 +71,8 @@ module.exports = {
             const embed = new EmbedBuilder()
                     .setColor('#5d00ff')
                     .setTitle('🌈 Color Changer 🌈')
-                    .setDescription('Change your user color with the menu below!');
+                    .setDescription('Change your user color with the menu below!')
+                    .setImage('https://i.imgur.com/5co18Zm.png');
             await interaction.reply({embeds: [embed], components:[row]});
     },
 };
