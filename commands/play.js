@@ -18,7 +18,7 @@ module.exports = {
         if (!url) {
             const queue = useQueue(interaction.guild.id);
             if (queue) {
-                await queue.node.play();
+                queue.node.setPaused(!queue.node.isPaused());
                 return interaction.followUp('Continuing queue.');
             } else {
                 return interaction.followUp('There is no current queue to play! Please attach a URL to play a song.')
